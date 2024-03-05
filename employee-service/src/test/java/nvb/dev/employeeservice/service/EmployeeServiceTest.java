@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -28,7 +29,7 @@ class EmployeeServiceTest {
     EmployeeServiceImpl employeeService;
 
     @Test
-    void createEmployee() {
+    void testThatCreateEmployeeSavesNewEmployee() {
         when(employeeRepository.save(any(EmployeeEntity.class))).thenReturn(getEmployeeEntity());
 
         EmployeeEntity savedEmployee = employeeService.createEmployee(getEmployeeRequest());
@@ -40,7 +41,7 @@ class EmployeeServiceTest {
     }
 
     @Test
-    void getAllEmployees() {
+    void testThatGetAllEmployeesReturnsListOfEmployees() {
         when(employeeRepository.findAll()).thenReturn(List.of(getEmployeeEntity()));
 
         List<EmployeeResponse> allEmployees = employeeService.getAllEmployees();
@@ -49,6 +50,26 @@ class EmployeeServiceTest {
         assertEquals("dummy", allEmployees.getFirst().getFirstName());
 
         verify(employeeRepository, atLeastOnce()).findAll();
+    }
+
+    @Test
+    void testThatOfficeNameExistsReturnsTrueIfItExists() {
+        when(employeeRepository.findByOfficeName(anyString())).thenReturn(Optional.of(getEmployeeEntity()));
+
+        boolean officeNameExists = employeeService.officeNameExists("dummy");
+
+        assertTrue(officeNameExists);
+        verify(employeeRepository, atLeastOnce()).findByOfficeName(anyString());
+    }
+
+    @Test
+    void testThatOfficeNameExistsReturnsFalseIfItDoesNotExists() {
+        when(employeeRepository.findByOfficeName(anyString())).thenReturn(Optional.empty());
+
+        boolean officeNameExists = employeeService.officeNameExists("dummy");
+
+        assertFalse(officeNameExists);
+        verify(employeeRepository, atLeastOnce()).findByOfficeName(anyString());
     }
 
     private EmployeeRequest getEmployeeRequest() {

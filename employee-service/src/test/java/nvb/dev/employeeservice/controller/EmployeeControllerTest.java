@@ -56,6 +56,14 @@ class EmployeeControllerTest {
                 .andExpect(status().isOk());
     }
 
+    @Test
+    void testThatOfficeNameExistsReturnsHttpStatus200() throws Exception {
+        mockMvc.perform(get("/api/v1/employee/dummy")
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk());
+    }
+
     private EmployeeRequest getEmployeeRequest() {
         return EmployeeRequest.builder()
                 .firstName("dummy")
