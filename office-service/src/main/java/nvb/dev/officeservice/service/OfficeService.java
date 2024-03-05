@@ -7,4 +7,6 @@ public interface OfficeService {
 
     OfficeEntity createOffice(OfficeRequest officeRequest);
 
+    boolean officeNameExists(String officeName);
+
 }

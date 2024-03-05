@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class OfficeServiceImpl implements OfficeService {
 
     private final OfficeRepository officeRepository;
@@ -24,5 +23,11 @@ public class OfficeServiceImpl implements OfficeService {
                 .officeName(officeRequest.getOfficeName())
                 .officePhoneNumber(officeRequest.getOfficePhoneNumber())
                 .build());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean officeNameExists(String officeName) {
+        return officeRepository.findByOfficeName(officeName).isPresent();
     }
 }
