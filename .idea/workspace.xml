@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ccce0cf-916a-4179-b12a-fc4e9191d3fa" name="Changes" comment="implemented employee repository">
+      <change afterPath="$PROJECT_DIR$/employee-service/src/main/java/nvb/dev/employeeservice/dao/dto/EmployeeRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/employee-service/src/main/java/nvb/dev/employeeservice/dao/dto/EmployeeResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-service/src/main/java/nvb/dev/employeeservice/dao/entity/EmployeeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/employee-service/src/main/java/nvb/dev/employeeservice/dao/entity/EmployeeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/employee-service/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2dEjybHi1sARsVFC4Dv0vKA6wYD" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EmployeeServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="EmployeeServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="employee-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="nvb.dev.employeeservice.EmployeeServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ccce0cf-916a-4179-b12a-fc4e9191d3fa" name="Changes" comment="" />
+      <created>1709580391171</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709580391171</updated>
+      <workItem from="1709580393072" duration="1668000" />
+      <workItem from="1709582082603" duration="458000" />
+      <workItem from="1709615533582" duration="63000" />
+    </task>
+    <task id="LOCAL-00001" summary="made the current module a maven project">
+      <option name="closed" value="true" />
+      <created>1709580526535</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709580526535</updated>
+    </task>
+    <task id="LOCAL-00002" summary="created employee-service module">
+      <option name="closed" value="true" />
+      <created>1709580802492</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709580802492</updated>
+    </task>
+    <task id="LOCAL-00003" summary="imported employee-service to the modules">
+      <option name="closed" value="true" />
+      <created>1709580831984</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709580831984</updated>
+    </task>
+    <task id="LOCAL-00004" summary="set up the mongodb">
+      <option name="closed" value="true" />
+      <created>1709581065957</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709581065957</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changed the database name">
+      <option name="closed" value="true" />
+      <created>1709581188590</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709581188590</updated>
+    </task>
+    <task id="LOCAL-00006" summary="created the employee entity">
+      <option name="closed" value="true" />
+      <created>1709581552484</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709581552484</updated>
+    </task>
+    <task id="LOCAL-00007" summary="implemented employee repository">
+      <option name="closed" value="true" />
+      <created>1709581884310</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709581884310</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="made the current module a maven project" />
+    <MESSAGE value="created employee-service module" />
+    <MESSAGE value="imported employee-service to the modules" />
+    <MESSAGE value="set up the mongodb" />
+    <MESSAGE value="changed the database name" />
+    <MESSAGE value="created the employee entity" />
+    <MESSAGE value="implemented employee repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented employee repository" />
+  </component>
+</project>
