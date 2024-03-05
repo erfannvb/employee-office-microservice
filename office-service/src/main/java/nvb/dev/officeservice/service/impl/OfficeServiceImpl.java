@@ -6,11 +6,13 @@ import nvb.dev.officeservice.dao.entity.OfficeEntity;
 import nvb.dev.officeservice.repository.OfficeRepository;
 import nvb.dev.officeservice.service.OfficeService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OfficeServiceImpl implements OfficeService {
 
     private final OfficeRepository officeRepository;
