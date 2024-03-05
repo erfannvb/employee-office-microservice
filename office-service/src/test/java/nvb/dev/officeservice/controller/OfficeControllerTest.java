@@ -19,6 +19,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,7 +39,7 @@ class OfficeControllerTest {
     OfficeService officeService;
 
     @Test
-    void testThatCreateOfficeReturns201Created() throws Exception {
+    void testThatCreateOfficeReturnsHttpStatus201Created() throws Exception {
         when(officeService.createOffice(getOfficeRequest())).thenReturn(getOfficeEntity());
 
         String officeJson = objectMapper.writeValueAsString(getOfficeRequest());
@@ -48,6 +49,14 @@ class OfficeControllerTest {
                         .content(officeJson)
                 )
                 .andExpect(status().isCreated());
+    }
+
+    @Test
+    void testThatOfficeNameExistsReturnsHttpStatus200Ok() throws Exception {
+        mockMvc.perform(get("/api/v1/office/dummy")
+                        .contentType(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk());
     }
 
     private OfficeRequest getOfficeRequest() {

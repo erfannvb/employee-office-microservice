@@ -10,9 +10,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -35,6 +36,26 @@ class OfficeServiceTest {
         assertEquals("dummy", savedOffice.getOfficePhoneNumber());
 
         verify(officeRepository, atLeastOnce()).save(any(OfficeEntity.class));
+    }
+
+    @Test
+    void testThatOfficeNameExistsReturnsTrueIfOfficeCodeExists() {
+        when(officeRepository.findByOfficeName(anyString())).thenReturn(Optional.of(getOfficeEntity()));
+
+        boolean officeNameExists = officeService.officeNameExists("dummy");
+
+        assertTrue(officeNameExists);
+        verify(officeRepository, atLeastOnce()).findByOfficeName(anyString());
+    }
+
+    @Test
+    void testThatOfficeNameExistsReturnsFalseIfOfficeCodeDoesNotExist() {
+        when(officeRepository.findByOfficeName(anyString())).thenReturn(Optional.empty());
+
+        boolean officeNameExists = officeService.officeNameExists("dummy");
+
+        assertFalse(officeNameExists);
+        verify(officeRepository, atLeastOnce()).findByOfficeName(anyString());
     }
 
     private OfficeRequest getOfficeRequest() {
