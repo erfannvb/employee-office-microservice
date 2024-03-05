@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         // Call office-service, add employee if the office exists
         OfficeResponse response = webClientBuilder.build().get()
-                .uri("http://localhost:8383/api/v1/office",
+                .uri("http://office-service/api/v1/office",
                         uriBuilder -> uriBuilder.queryParam("officeName", employee.getOfficeName()).build())
                 .retrieve()
                 .bodyToMono(OfficeResponse.class)
