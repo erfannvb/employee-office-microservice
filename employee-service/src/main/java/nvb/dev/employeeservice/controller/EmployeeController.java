@@ -27,10 +27,4 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeResponse>> getAllEmployees() {
         return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
     }
-
-    @GetMapping(path = "/employee/{officeName}")
-    public ResponseEntity<Boolean> officeNameExists(@PathVariable String officeName) {
-        return new ResponseEntity<>(employeeService.officeNameExists(officeName), HttpStatus.OK);
-    }
-
 }

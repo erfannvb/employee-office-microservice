@@ -7,7 +7,6 @@ import nvb.dev.employeeservice.dao.entity.EmployeeEntity;
 import nvb.dev.employeeservice.repository.EmployeeRepository;
 import nvb.dev.employeeservice.service.EmployeeService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,12 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<EmployeeResponse> getAllEmployees() {
         List<EmployeeEntity> employeeList = employeeRepository.findAll();
         return employeeList.stream().map(this::mapToEmployeeResponse).toList();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
-    public boolean officeNameExists(String officeName) {
-        return employeeRepository.findByOfficeName(officeName).isPresent();
     }
 
     private EmployeeResponse mapToEmployeeResponse(EmployeeEntity employeeEntity) {
