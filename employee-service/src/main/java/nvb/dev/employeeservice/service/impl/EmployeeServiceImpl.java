@@ -22,7 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .firstName(employeeRequest.getFirstName())
                 .lastName(employeeRequest.getLastName())
                 .dateOfBirth(employeeRequest.getDateOfBirth())
-                .officeCode(employeeRequest.getOfficeCode())
+                .officeName(employeeRequest.getOfficeName())
                 .build());
     }
 
@@ -38,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .firstName(employeeEntity.getFirstName())
                 .lastName(employeeEntity.getLastName())
                 .dateOfBirth(employeeEntity.getDateOfBirth())
-                .officeCode(employeeEntity.getOfficeCode())
+                .officeName(employeeEntity.getOfficeName())
                 .build();
     }
 }

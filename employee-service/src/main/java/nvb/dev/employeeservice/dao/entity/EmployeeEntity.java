@@ -22,6 +22,6 @@ public class EmployeeEntity {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private String officeCode;
+    private String officeName;
 
 }

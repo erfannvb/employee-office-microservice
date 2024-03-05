@@ -61,7 +61,7 @@ class EmployeeControllerTest {
                 .firstName("dummy")
                 .lastName("dummy")
                 .dateOfBirth(LocalDate.now())
-                .officeCode("dummy")
+                .officeName("dummy")
                 .build();
     }
 }
