@@ -20,4 +20,9 @@ public class OfficeEntity {
     private String officeName;
     private String officePhoneNumber;
 
+    public OfficeEntity(String officeCode, String officeName, String officePhoneNumber) {
+        this.officeCode = officeCode;
+        this.officeName = officeName;
+        this.officePhoneNumber = officePhoneNumber;
+    }
 }
