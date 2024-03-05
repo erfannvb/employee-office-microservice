@@ -12,5 +12,6 @@ public class EmployeeRequest {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
+    private String officeCode;
 
 }

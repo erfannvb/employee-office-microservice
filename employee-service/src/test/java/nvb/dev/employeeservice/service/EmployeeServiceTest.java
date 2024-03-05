@@ -56,6 +56,7 @@ class EmployeeServiceTest {
                 .firstName("dummy")
                 .lastName("dummy")
                 .dateOfBirth(LocalDate.now())
+                .officeCode("dummy")
                 .build();
     }
 
@@ -65,6 +66,7 @@ class EmployeeServiceTest {
                 .firstName("dummy")
                 .lastName("dummy")
                 .dateOfBirth(LocalDate.now())
+                .officeCode("dummy")
                 .build();
     }
 }
