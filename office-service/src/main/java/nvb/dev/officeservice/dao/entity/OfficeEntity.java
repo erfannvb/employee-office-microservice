@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(value = "office")
@@ -17,6 +18,8 @@ public class OfficeEntity {
     @Id
     private String id;
     private String officeCode;
+
+    @Indexed(unique = true)
     private String officeName;
     private String officePhoneNumber;
 
