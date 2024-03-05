@@ -2,12 +2,15 @@ package nvb.dev.officeservice.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import nvb.dev.officeservice.dao.dto.OfficeRequest;
+import nvb.dev.officeservice.dao.dto.OfficeResponse;
 import nvb.dev.officeservice.dao.entity.OfficeEntity;
+import nvb.dev.officeservice.exception.OfficeNotFoundException;
 import nvb.dev.officeservice.repository.OfficeRepository;
 import nvb.dev.officeservice.service.OfficeService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -27,7 +30,19 @@ public class OfficeServiceImpl implements OfficeService {
 
     @Override
     @Transactional(readOnly = true)
-    public boolean officeNameExists(String officeName) {
-        return officeRepository.findByOfficeName(officeName).isPresent();
+    public OfficeResponse officeNameExists(String officeName) {
+        Optional<OfficeEntity> foundOffice = officeRepository.findByOfficeName(officeName);
+        if (foundOffice.isPresent()) {
+            return foundOffice.map(this::mapToOfficeResponse).orElseThrow();
+        } else {
+            throw new OfficeNotFoundException(officeName);
+        }
+    }
+
+    private OfficeResponse mapToOfficeResponse(OfficeEntity officeEntity) {
+        return OfficeResponse.builder()
+                .officeName(officeEntity.getOfficeName())
+                .exists(officeRepository.existsById(officeEntity.getId()))
+                .build();
     }
 }
