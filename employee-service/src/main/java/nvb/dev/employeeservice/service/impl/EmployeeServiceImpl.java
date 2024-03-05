@@ -5,7 +5,6 @@ import nvb.dev.employeeservice.dao.dto.EmployeeRequest;
 import nvb.dev.employeeservice.dao.dto.EmployeeResponse;
 import nvb.dev.employeeservice.dao.dto.OfficeResponse;
 import nvb.dev.employeeservice.dao.entity.EmployeeEntity;
-import nvb.dev.employeeservice.exception.EmployeeNotFoundException;
 import nvb.dev.employeeservice.repository.EmployeeRepository;
 import nvb.dev.employeeservice.service.EmployeeService;
 import org.springframework.stereotype.Service;
@@ -45,7 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (officeNameExists) {
             return employeeRepository.save(employee);
         } else {
-            throw new EmployeeNotFoundException(employeeRequest.getOfficeName());
+            throw new IllegalArgumentException("Something went wrong!");
         }
     }
 
