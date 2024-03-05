@@ -12,4 +12,6 @@ public interface EmployeeService {
 
     List<EmployeeResponse> getAllEmployees();
 
+    boolean officeNameExists(String officeName);
+
 }
