@@ -2,6 +2,7 @@ package nvb.dev.officeservice.controller;
 
 import lombok.RequiredArgsConstructor;
 import nvb.dev.officeservice.dao.dto.OfficeRequest;
+import nvb.dev.officeservice.dao.dto.OfficeResponse;
 import nvb.dev.officeservice.dao.entity.OfficeEntity;
 import nvb.dev.officeservice.service.OfficeService;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,9 @@ public class OfficeController {
         return new ResponseEntity<>(officeService.createOffice(officeRequest), HttpStatus.CREATED);
     }
 
-    @GetMapping(path = "/office/{officeName}")
-    public boolean officeNameExists(@PathVariable String officeName) {
-        return officeService.officeNameExists(officeName);
+    @GetMapping(path = "/office")
+    public ResponseEntity<OfficeResponse> officeNameExists(@RequestParam String officeName) {
+        return new ResponseEntity<>(officeService.officeNameExists(officeName), HttpStatus.OK);
     }
 
 }
