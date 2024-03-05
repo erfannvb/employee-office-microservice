@@ -6,10 +6,7 @@ import nvb.dev.officeservice.dao.entity.OfficeEntity;
 import nvb.dev.officeservice.service.OfficeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/v1")
@@ -21,6 +18,11 @@ public class OfficeController {
     @PostMapping(path = "/office")
     public ResponseEntity<OfficeEntity> createOffice(@RequestBody OfficeRequest officeRequest) {
         return new ResponseEntity<>(officeService.createOffice(officeRequest), HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/office/{officeName}")
+    public boolean officeNameExists(@PathVariable String officeName) {
+        return officeService.officeNameExists(officeName);
     }
 
 }
