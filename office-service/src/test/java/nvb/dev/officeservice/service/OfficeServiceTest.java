@@ -1,7 +1,9 @@
 package nvb.dev.officeservice.service;
 
 import nvb.dev.officeservice.dao.dto.OfficeRequest;
+import nvb.dev.officeservice.dao.dto.OfficeResponse;
 import nvb.dev.officeservice.dao.entity.OfficeEntity;
+import nvb.dev.officeservice.exception.OfficeNotFoundException;
 import nvb.dev.officeservice.repository.OfficeRepository;
 import nvb.dev.officeservice.service.impl.OfficeServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -39,23 +41,29 @@ class OfficeServiceTest {
     }
 
     @Test
-    void testThatOfficeNameExistsReturnsTrueIfOfficeCodeExists() {
+    void testThatOfficeNameExistsReturnsOfficeResponseIfOfficeCodeExists() {
         when(officeRepository.findByOfficeName(anyString())).thenReturn(Optional.of(getOfficeEntity()));
 
-        boolean officeNameExists = officeService.officeNameExists("dummy");
+        OfficeResponse officeResponse = officeService.officeNameExists("dummy");
 
-        assertTrue(officeNameExists);
+        assertEquals(officeResponse.getOfficeName(), getOfficeResponse().getOfficeName());
+        assertTrue(getOfficeResponse().isExists());
         verify(officeRepository, atLeastOnce()).findByOfficeName(anyString());
     }
 
     @Test
-    void testThatOfficeNameExistsReturnsFalseIfOfficeCodeDoesNotExist() {
+    void testThatOfficeNameExistsThrowsExceptionIfOfficeCodeDoesNotExist() {
         when(officeRepository.findByOfficeName(anyString())).thenReturn(Optional.empty());
 
-        boolean officeNameExists = officeService.officeNameExists("dummy");
-
-        assertFalse(officeNameExists);
+        assertThrows(OfficeNotFoundException.class, () -> officeService.officeNameExists("dummy"));
         verify(officeRepository, atLeastOnce()).findByOfficeName(anyString());
+    }
+
+    private OfficeResponse getOfficeResponse() {
+        return OfficeResponse.builder()
+                .officeName("dummy")
+                .exists(true)
+                .build();
     }
 
     private OfficeRequest getOfficeRequest() {

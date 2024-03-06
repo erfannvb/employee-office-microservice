@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -53,7 +52,7 @@ class OfficeControllerTest {
 
     @Test
     void testThatOfficeNameExistsReturnsHttpStatus200Ok() throws Exception {
-        mockMvc.perform(get("/api/v1/office/dummy")
+        mockMvc.perform(get("/api/v1/office?officeName=dummy")
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk());
