@@ -1,6 +1,7 @@
 package nvb.dev.employeeservice.controller;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import lombok.RequiredArgsConstructor;
 import nvb.dev.employeeservice.dao.dto.EmployeeRequest;
@@ -26,6 +27,7 @@ public class EmployeeController {
     @PostMapping(path = "/employee")
     @CircuitBreaker(name = OFFICE_SERVICE, fallbackMethod = "fallbackMethod")
     @TimeLimiter(name = OFFICE_SERVICE)
+    @Retry(name = OFFICE_SERVICE)
     public CompletableFuture<ResponseEntity<EmployeeEntity>> createEmployee(@RequestBody EmployeeRequest employeeRequest) {
         return CompletableFuture.supplyAsync(() -> new ResponseEntity<>(
                 employeeService.createEmployee(employeeRequest),
