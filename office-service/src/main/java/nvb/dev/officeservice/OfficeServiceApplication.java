@@ -20,10 +20,10 @@ public class OfficeServiceApplication {
     }
 
     @Bean
-    public ApplicationRunner loadData(OfficeRepository officeRepository) {
+    public ApplicationRunner applicationRunner(OfficeRepository officeRepository) {
         return args -> officeRepository.saveAll(List.of(
-                new OfficeEntity(UUID.randomUUID().toString(), "Microsoft", "202-555-0152"),
-                new OfficeEntity(UUID.randomUUID().toString(), "Meta", "202-555-0197")
+                new OfficeEntity(UUID.randomUUID().toString(), "Microsoft", "1234"),
+                new OfficeEntity(UUID.randomUUID().toString(), "Meta", "1498")
         ));
     }
 
