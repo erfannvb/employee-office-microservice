@@ -1,6 +1,8 @@
 package nvb.dev.officeservice.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import nvb.dev.officeservice.dao.dto.OfficeRequest;
 import nvb.dev.officeservice.dao.dto.OfficeResponse;
 import nvb.dev.officeservice.dao.entity.OfficeEntity;
@@ -15,6 +17,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class OfficeServiceImpl implements OfficeService {
 
     private final OfficeRepository officeRepository;
@@ -30,7 +33,11 @@ public class OfficeServiceImpl implements OfficeService {
 
     @Override
     @Transactional(readOnly = true)
+    @SneakyThrows
     public OfficeResponse officeNameExists(String officeName) {
+        log.info("Wait Started");
+        Thread.sleep(10000);
+        log.info("Wait Ended");
         Optional<OfficeEntity> foundOffice = officeRepository.findByOfficeName(officeName);
         if (foundOffice.isPresent()) {
             return foundOffice.map(this::mapToOfficeResponse).orElseThrow();
