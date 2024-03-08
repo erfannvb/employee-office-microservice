@@ -5,8 +5,10 @@ import nvb.dev.employeeservice.dao.dto.EmployeeRequest;
 import nvb.dev.employeeservice.dao.dto.EmployeeResponse;
 import nvb.dev.employeeservice.dao.dto.OfficeResponse;
 import nvb.dev.employeeservice.dao.entity.EmployeeEntity;
+import nvb.dev.employeeservice.event.CreateEmployeeEvent;
 import nvb.dev.employeeservice.repository.EmployeeRepository;
 import nvb.dev.employeeservice.service.EmployeeService;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -20,6 +22,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
     private final WebClient.Builder webClientBuilder;
+    private final KafkaTemplate<String, CreateEmployeeEvent> kafkaTemplate;
 
     @Override
     public EmployeeEntity createEmployee(EmployeeRequest employeeRequest) {
@@ -42,6 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         boolean officeNameExists = response.isExists();
 
         if (officeNameExists) {
+            kafkaTemplate.send("notificationTopic",
+                    new CreateEmployeeEvent(employee.getFirstName(), employee.getLastName()));
             return employeeRepository.save(employee);
         } else {
             throw new IllegalArgumentException("Something went wrong!");
